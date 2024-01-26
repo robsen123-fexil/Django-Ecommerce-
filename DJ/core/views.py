@@ -6,5 +6,5 @@ def itemlist(request):
     context ={
         'item':items.objects.all(),
     }
-    return render(request,'item_list.html',context)
-    
+    return render(request,'itemlist.html',context)
+
