@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import items
+
+def itemlist(request):
+    context ={
+        'item':items.objects.all(),
+    }
+    return render(request,'item_list.html',context)
+    
