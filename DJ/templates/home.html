@@ -223,13 +223,13 @@
           <a class="nav-link text-white" href="{% static '#' %}">All</a>
         </li>
         <li class="nav-item">
-              <a class="nav-link text-white" href="{%static '#'%}">Shirts</a>
+              <a class="nav-link text-white" href="{% static '#' %}">Shirts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="{ static'#'%}">Sport wears</a>
+              <a class="nav-link text-white" href="{% static '#' %}">Sport wears</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="{ % static '#'%}">Outwears</a>
+              <a class="nav-link text-white" href="{% static '#' %}">Outwears</a>
             </li>
 
       </ul>
@@ -256,7 +256,7 @@
             data-mdb-ripple-color="light">
             <img src="{% static 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg '%}"
               class="w-100" />
-            <a href="{%static '#' %}!">
+            <a href="{% static '#' %}!">
               <div class="mask">
                 <div class="d-flex justify-content-start align-items-end h-100">
                   <h5><span class="badge bg-dark ms-2">NEW</span></h5>
@@ -268,10 +268,10 @@
             </a>
           </div>
           <div class="card-body">
-            <a href="{% static ''%}" class="text-reset">
+            <a href="{% static '' %}" class="text-reset">
               <h5 class="card-title mb-2">Denim shirt</h5>
             </a>
-            <a href="{% static ''%}" class="text-reset ">
+            <a href="{% static '' %}" class="text-reset ">
               <p>Shirt</p>
             </a>
             <h6 class="mb-3 price">120$</h6>
@@ -285,7 +285,7 @@
             data-mdb-ripple-color="light">
             <img src="{% static 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg' %}"
               class="w-100" />
-            <a href="{ %static '#!' %} ">  
+            <a href="{% static '#!' %} ">  
               <div class="mask">
                 <div class="d-flex justify-content-start align-items-end h-100">
                   <h5><span class="badge bg-primary ms-2">bestseller</span></h5>
@@ -297,10 +297,10 @@
             </a>
           </div>
           <div class="card-body">
-            <a href="{% static ''%}" class="text-reset">
+            <a href="{% static '' %}" class="text-reset">
               <h5 class="card-title mb-2">Sweatshirt</h5>
             </a>
-            <a href="{% static ''% }" class="text-reset ">
+            <a href="{% static '' %}" class="text-reset ">
               <p>Sport wear</p>
             </a>
             <h6 class="mb-3 price">139$</h6>
@@ -321,7 +321,7 @@
             </a>
           </div>
           <div class="card-body">
-            <a href="{% static  ''%}" class="text-reset">
+            <a href="{% static  '' %}" class="text-reset">
               <h5 class="card-title mb-2">Grey blouse</h5>
             </a>
             <a href="{% static '' %}" class="text-reset ">
@@ -337,7 +337,7 @@
           <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
             <img src="{% static 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15.jpg' %}"
               class="w-100" />
-            <a href="{% static '#!'%}">
+            <a href="{% static '#!' %}">
               <div class="mask">
                 <div class="d-flex justify-content-start align-items-end h-100">
                   <h5><span class="badge sale-badge ms-2">-10%</span></h5>
@@ -349,10 +349,10 @@
             </a>
           </div>
           <div class="card-body">
-            <a href="{%static '' %}" class="text-reset">
+            <a href="{% static '' %}" class="text-reset">
               <h5 class="card-title mb-2">Black jacket</h5>
             </a>
-            <a href="{% static ''%}" class="text-reset ">
+            <a href="{% static '' %}" class="text-reset ">
               <p>Outwear</p>
             </a>
             <h6 class="mb-3 price">
@@ -430,10 +430,10 @@
             </a>
           </div>
           <div class="card-body">
-            <a href="" class="text-reset">
+            <a href="{%static '' %}" class="text-reset">
               <h5 class="card-title mb-2">Black jacket</h5>
             </a>
-            <a href="" class="text-reset">
+            <a href="{% static '' %}" class="text-reset">
               <p>Outwear</p>
             </a>
             <h6 class="mb-3 price">199$</h6>
@@ -454,10 +454,10 @@
             </a>
           </div>
           <div class="card-body">
-            <a href="" class="text-reset">
+            <a href="{%static '' %}" class="text-reset">
               <h5 class="card-title mb-2">Denim shirt</h5>
             </a>
-            <a href="" class="text-reset ">
+            <a href="{% static '' %}" class="text-reset ">
               <p>Shirt</p>
             </a>
             <h6 class="mb-3 price">120$</h6>
@@ -478,11 +478,11 @@
     </li>
     <li class="page-item active"><a class="page-link" href="{ % static '#' %}">1</a></li>
     <li class="page-item"><a class="page-link" href="{% static '#' %}">2</a></li>
-    <li class="page-item"><a class="page-link" href="{% static '#'%}">3</a></li>
+    <li class="page-item"><a class="page-link" href="{% static '#' %}">3</a></li>
     <li class="page-item"><a class="page-link" href="{% static '#' %}">4</a></li>
-    <li class="page-item"><a class="page-link" href="{ % static '#' %} ">5</a></li>
+    <li class="page-item"><a class="page-link" href="{% static '#' %}">5</a></li>
     <li class="page-item">
-      <a class="page-link" href="{ % static '#' %}" aria-label="Next">
+      <a class="page-link" href="{% static '#' %}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
@@ -500,7 +500,7 @@
       <a class="btn btn-outline-white footer-cta mx-2" href="{% static 'https://mdbootstrap.com/docs/jquery/getting-started/download/ '%}" target="_blank" role="button">Download MDB
         <i class="fas fa-download ms-2"></i>
       </a>
-      <a class="btn btn-outline-white footer-cta mx-2" href="{ % static https://mdbootstrap.com/education/bootstrap/' %}" target="_blank" role="button">Start free tutorial
+      <a class="btn btn-outline-white footer-cta mx-2" href="{% static https://mdbootstrap.com/education/bootstrap/' %}" target="_blank" role="button">Start free tutorial
         <i class="fas fa-graduation-cap ms-2"></i>
       </a>
     </div>
