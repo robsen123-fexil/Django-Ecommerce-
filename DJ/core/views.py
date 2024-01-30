@@ -8,7 +8,10 @@ def home(request):
     }
     return render(request,'home.html',context)
 def product(request):
-    return render(request, 'product.html')
+    context ={
+        'item':items.objects.all(),
+    } 
+    return render(request, 'product.html' ,context)
 def checkout(request):
     context={
         'item':items.objects.all()

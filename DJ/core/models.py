@@ -15,13 +15,13 @@ class items(models.Model):
     price=models.FloatField()
     categories=models.CharField(choices=CATEGORIES_CHOICE, max_length=2)
     label=models.CharField(choices=LABEL_CHOICES, max_length=1)
-    def __str__(self):
-        return self.title
+    
 class orderitem(models.Model):
     item=models.ForeignKey(items, on_delete=models.CASCADE)    
     
     def __str__(self):
         return self.item.title
+    
 class order(models.Model):
      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
      items = models.ManyToManyField(orderitem)

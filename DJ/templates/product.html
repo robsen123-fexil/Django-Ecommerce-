@@ -76,29 +76,25 @@
             <!--Grid column-->
 
             <!--Grid column-->
+         {%for product in item %}
             <div class="col-md-6 mb-4">
                 <!--Content-->
                 <div class="p-4">
                     <div class="mb-3">
                         <a href="">
-                            <span class="badge bg-dark me-1">Category 2</span>
+                            <span class="badge bg-dark me-1">{{product.categories}}</span>
                         </a>
-                        <a href="">
-                            <span class="badge bg-info me-1">New</span>
-                        </a>
-                        <a href="">
-                            <span class="badge bg-danger me-1">Bestseller</span>
-                        </a>
+                        
                     </div>
 
                     <p class="lead">
                         <span class="me-1">
                             <del>$200</del>
                         </span>
-                        <span>$100</span>
+                        <span>{{product.price}}</span>
                     </p>
 
-                    <strong><p style="font-size: 20px;">Description</p></strong>
+                    <strong><p style="font-size: 20px;">Descrition</p></strong>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa sint voluptatibus! Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
 
@@ -116,6 +112,7 @@
                 <!--Content-->
             </div>
             <!--Grid column-->
+        {% endfor %}
         </div>
         <!--Grid row-->
 
