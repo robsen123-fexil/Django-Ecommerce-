@@ -7,5 +7,10 @@ def home(request):
         'item':items.objects.all(),
     }
     return render(request,'home.html',context)
+def product(request):
+    return render(request, 'product.html')
 def checkout(request):
-    return render(request, 'checkout.html')
+    context={
+        'item':items.objects.all()
+    }
+    return render(request, 'checkout.html',context)
