@@ -89,7 +89,11 @@
 
                     <p class="lead">
                         <span class="me-1">
-                            <del>$200</del>
+                            <del>{%if product.discount_price%}
+                            {{product.discount_price}}
+                            {%endif%}
+                            
+                            </del>
                         </span>
                         <span>{{product.price}}</span>
                     </p>

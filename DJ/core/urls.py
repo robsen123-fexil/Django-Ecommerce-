@@ -6,6 +6,6 @@ app_name='core'
 
 urlpatterns = [
     path('', views.home , name='home'),
-    path('product/<slug>', views.product, name='product'),
+    path('product/', views.product, name='product'),
     path('checkout/', views.checkout, name='checkout'),
 ]
