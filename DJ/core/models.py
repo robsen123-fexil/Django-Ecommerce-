@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.shortcuts import reverse
-
+from django.utils.text import slugify
 CATEGORIES_CHOICE=(('S', 'shirts'), 
                    ('SW', 'sportshirt') , 
                    ('OW','outwear')
@@ -22,7 +22,8 @@ class items(models.Model):
     def __str__(self):
         return self.title
     def get_absolute_url(self):
-        return reverse('core:product', kwarg={
+        slugify=
+        return reverse('core:product', kwargs={
             'slug':self.slug
         })
     
