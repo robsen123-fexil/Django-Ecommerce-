@@ -11,9 +11,8 @@ def checkout(request):
 class homeview(ListView):
     model=items
     template_name='home.html'
-def product(request):
-    context={
-        'item':items.objects.all()
-    }
-    return render(request,'product.html', context)
-      
+
+class itemview(DetailView):
+    model=items
+    template_name='product.html' 
+    slug_url_kwarg = 'slug' 
