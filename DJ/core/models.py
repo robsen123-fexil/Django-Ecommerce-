@@ -21,6 +21,7 @@ class items(models.Model):
     label=models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug=models.CharField(max_length=1000, null= True, blank = True)
     date=models.DateField(default= timezone.now)
+    description=models.CharField(max_length=10000)
     def __str__(self):
         return self.title
     def save(self, *args, **kwargs):
