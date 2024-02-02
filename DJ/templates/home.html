@@ -280,12 +280,18 @@
             <a href="{% static '' %}" class="text-reset ">
               <p>{{product.categories}}</p>
             </a>
+            <a href="{% static '' %}" class="text-reset ">
+              <p>{{product.description}}</p>
+            </a>
             <h6 class="mb-3 price">$
             {% if product.discount_price%}  
             {{product.discount_price}}
             {%else%}
             {{product.price}}
+            
             {%endif %}
+            
+
                                          
                                          
                                          
