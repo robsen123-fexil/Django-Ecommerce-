@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView
 from .models import items
+def products(request):
+    context = {
+        'items': items.objects.all()
+    }
+    return render(request, "products.html", context)
+
 
 
 def checkout(request):
@@ -13,6 +19,6 @@ class homeview(ListView):
     template_name='home.html'
 
 class itemview(DetailView):
-    model=items
-    template_name='product.html' 
-    slug_url_kwarg = 'slug' 
+    model = items
+    template_name = "product.html"
+
