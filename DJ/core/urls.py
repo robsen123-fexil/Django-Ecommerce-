@@ -3,8 +3,9 @@ from django.urls import path
 
 from .views import (
     homeview,
-    itemview,
+    products,
     checkout,
+    productall
 
 )
 app_name='core'
@@ -12,6 +13,7 @@ app_name='core'
 
 urlpatterns = [
     path('', homeview.as_view(), name='home'),
-    path('product/', itemview.as_view(), name='product'),
+    path('product/<slug:slug>/', products.as_view() , name='product'),
     path('checkout/', checkout,  name='checkout'),
+    path('productall/', productall, name='productall')
 ]

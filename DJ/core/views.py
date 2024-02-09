@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView
 from .models import items
-def products(request):
-    context = {
-        'items': items.objects.all()
-    }
-    return render(request, "products.html", context)
 
-
+class products(ListView):
+    model=items
+    template_name='product.html'
+def productall(request):
+    context={
+        'item':items.objects.all()
+    }     
+    return render(request , 'product.html' , context)   
 
 def checkout(request):
     context={
@@ -17,8 +19,3 @@ def checkout(request):
 class homeview(ListView):
     model=items
     template_name='home.html'
-
-class itemview(DetailView):
-    model = items
-    template_name = "product.html"
-

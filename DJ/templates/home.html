@@ -51,10 +51,15 @@
       </a>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
         <li class="nav-item">
-          <a class="nav-link px-lg-3 py-lg-4" href="{% url 'core:product' %}"> Products </a>
+        {%for product in item%}
+          <a class="nav-link px-lg-3 py-lg-4" href="{% url 'core:product' slug=product.slug %}"> Products </a>
+          {%endfor %}
         </li>
-       
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'core:productall' %} ">ProductS</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'core:checkout' %} ">Checkout</a>
         </li>
@@ -274,7 +279,7 @@
             </a>
           </div>
           <div class="card-body">
-            <a href="{item.get_absolute_url}" class="text-reset">
+            <a href="{{product.get_absolute_url}}" class="text-reset">
               <h5 class="card-title mb-2">{{product.title}}</h5>
             </a>
             <a href="{% static '' %}" class="text-reset ">
