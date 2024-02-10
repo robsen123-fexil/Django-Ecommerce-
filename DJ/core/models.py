@@ -23,6 +23,7 @@ class items(models.Model):
     date=models.DateField(default= timezone.now)
     description=models.CharField(max_length=10000)
     forsell=models.CharField(max_length=100)
+    quantity=models.IntegerField(default=1)
     
     def __str__(self):
         return self.title
