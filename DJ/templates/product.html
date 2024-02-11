@@ -75,43 +75,40 @@ ab<!-- Navbar -->
 
             <!--Grid column-->
             {%for product in object_list %}
-            <div class="col-md-6 mb-4">
-                <!--Content-->
+              <div class="col-md-6 mb-4">
                 <div class="p-4">
                     <div class="mb-3">
                         <a href="">
                             <span class="badge bg-dark me-1">{{product.categories}}</span>
                         </a>
-                       
-
+                        <a  href="" <span class ="badge bg-dark me-1 ">{{product.price}}</span>
+                        </a>
+                        <a  href="" <span class ="badge bg-dark me-1 ">{{product.discount_price}}</span>
+                        </a>
                     </div>
 
                     <p class="lead">
                         <span class="me-1">
-                        {%if product.discount%}
-                            <del>{{product.discount}}</del>
+                         {%if product.discount_price%}
+                            <del>{{product.discount_price}}</del>
                         </span>
                         {%else%}
                         <span>{{product.price}}</span>
                         {%endif %}
                     </p>
-
                     <strong><p style="font-size: 20px;">Description</p></strong>
-
                     <p>{{product.description}}</p>
-
                     <form class="d-flex justify-content-left">
-                       
                      <a href={{product.get_add_to_cart_url}} class="btn btn-primary ms-1">
                             Add to cart
                     </a>
-                        
+                     <a href={{product.get_remove_from_cart_url}} class="btn btn-danger ms-1">
+                            remove from cart
+                    </a>
                     </form>
                 </div>
-                <!--Content-->
-            </div>
+              </div>
             {% endfor %}
-            <!--Grid column-->
         </div>
         <!--Grid row-->
 

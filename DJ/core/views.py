@@ -38,3 +38,27 @@ def add_to_cart(request, slug):
         neworder.items.add(order_item)
 
     return redirect("core:product", slug=slug)
+from django.shortcuts import get_object_or_404, redirect
+from .models import items, order, orderitem
+
+def remove_from_cart(request, slug):
+    item = get_object_or_404(items, slug=slug)
+    order_qs = order.objects.filter(user=request.user, ordered=False)
+
+    if order_qs.exists():
+        orderuser = order_qs[0]
+        if orderuser.items.filter(item__slug=item.slug).exists():
+            
+            order_item = orderitem.objects.filter(item=item, user=request.user, ordered=False).first()
+            order_item.quality -= 1
+            order_item.save()
+            if order_item:
+                orderuser.items.remove(order_item)
+                return redirect("core:product", slug=slug)
+        else:
+             redirect("core:product", slug=slug)
+    else:
+         redirect("core:product", slug=slug)
+
+    return redirect("core:product", slug=slug)
+
