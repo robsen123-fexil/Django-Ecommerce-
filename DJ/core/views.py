@@ -3,6 +3,7 @@ from django.views.generic import ListView,DetailView
 from .models import items , orderitem , order
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.contrib import messages
 class products(ListView):
     model=items
     template_name='product.html'
@@ -22,7 +23,7 @@ class homeview(ListView):
     template_name='home.html'
 def add_to_cart(request, slug):
     item = get_object_or_404(items, slug=slug)
-    order_item,created= orderitem.objects.get_or_create(item=item , user=request.user, ordered=False)
+    order_item= orderitem.objects.get_or_create(item=item , user=request.user, ordered=False)
     order_qs = order.objects.filter(user=request.user, ordered=False)
 
     if order_qs.exists():
@@ -30,13 +31,16 @@ def add_to_cart(request, slug):
         if orderuser.items.filter(item__slug=item.slug).exists():
             order_item.quality += 1
             order_item.save()
+            messages.info(request,"THIS PRODUCT IS UPDATED")
         else:
+            messages.info(request, "THIS ITEM IS ALREADY ADDED TO YOUR CART ")
             orderuser.items.add(order_item)
     else:
         order_date = timezone.now()
         neworder = order.objects.create(user=request.user, ordered_date=order_date)
         neworder.items.add(order_item)
-
+        messages.info(request, "THE ITEM IS ADDED TO YOU CART ")
+        
     return redirect("core:product", slug=slug)
 from django.shortcuts import get_object_or_404, redirect
 from .models import items, order, orderitem
@@ -52,12 +56,17 @@ def remove_from_cart(request, slug):
             order_item = orderitem.objects.filter(item=item, user=request.user, ordered=False).first()
             order_item.quality -= 1
             order_item.save()
+            messages.info(request , "THE PRODUCT IS UPDATED ")
             if order_item:
                 orderuser.items.remove(order_item)
+                messages.info(request , "THE PRODUCT IS REMOVED SUCCESSFULLY")
+
                 return redirect("core:product", slug=slug)
         else:
+             messages.info(request , "THE PRODUCT IS NOT IN YOUR CART")
              redirect("core:product", slug=slug)
     else:
+         messages.info(request, "YOUR DONT HAVE ACTIVATED CARTS")
          redirect("core:product", slug=slug)
 
     return redirect("core:product", slug=slug)
