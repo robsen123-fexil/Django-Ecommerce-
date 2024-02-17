@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404, redirect
 from .models import items, order, orderitem
 from django.contrib import messages
+from django.contrib.auth import authenticate,login
+
 class products(ListView):
     model=items
     template_name='product.html'
@@ -75,6 +77,19 @@ def remove_from_cart(request, slug):
     return redirect("core:product", slug=slug)
 def login_view(request):
     if request=="POST":
+        username=request.POST[username]
+        password=request.POST[password]
+        remember_me=request.POST.get('remember_me', False)
+        user=authenticate(request, username=username, password=password)
+        if user.username=='admin' and user.password=='1234':
+            return render(request, 'home.html')
+        if user is not None:
+            login(request, user)
+            return redirect('home')
         
-      
+
+        else:
+            messages.error(request, "Invalid Password Or Username")
     return render(request, 'login.html')
+def logout(request ):
+    return render(request , "login.html")

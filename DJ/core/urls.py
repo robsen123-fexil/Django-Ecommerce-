@@ -8,7 +8,8 @@ from .views import (
     productall,
     add_to_cart,
     remove_from_cart,
-    login_view
+    login_view,
+    logout
 
 )
 app_name='core'
@@ -22,5 +23,6 @@ urlpatterns = [
     path('add-to-cart/<slug>/', add_to_cart, name='add-to-cart'),
     path('remove-from-cart/<slug>/', remove_from_cart, name='remove_from_cart'),
     
-    path('login_view/', login_view , name='login_view')
+    path('login_view/', login_view , name='login_view'),
+    path('logout' , logout, name='logout')
 ]

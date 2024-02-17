@@ -47,7 +47,19 @@
                         </div>
 						
                     </div>
+					 {% if messages %}
+                          <div class="alert alert-danger">
+                     <ul>
+                      {% for message in messages %}
+                        <li>{{message}}</li>
+                      {% endfor %}
+                      </ul>
+                    </div>
+                     {% endif %} 
+					 
 					<div class="col-lg-6 col-md-12">
+                      <from method = "POST" action="{%url 'core:login_view'%}"
+                        {% csrf_token %}
                         <div class="padding">
                             <h2>Login</h2>
 							

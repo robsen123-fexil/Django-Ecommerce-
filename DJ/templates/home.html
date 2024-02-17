@@ -91,8 +91,8 @@
                 🛒
             </div>
             <span style="margin-left: 10px; font-weight: bold;">cart</span>
-             <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'core:login_view' %}">
-                      LOGIN 
+             <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'core:logout' %}">
+                      LOGOUT
                 </a>
         </div>
         <div>
@@ -104,8 +104,12 @@
         <div style="width: 50px; height: 50px; background-color: #fff; text-align: center; line-height: 50px; color: #3498db; border-radius: 50%;">
             🛒
         </div>
+        </div>
+            <span style="margin-left: 10px; font-weight: bold;">cart</span>
 
-         
+         <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'core:login_view' %}">
+                      LOGIN 
+                </a>
          
          
     {% endif %}
