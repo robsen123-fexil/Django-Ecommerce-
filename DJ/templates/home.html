@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
+    <title>ONLINE SHOPPING</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static 'https://use.fontawesome.com/releases/v5.11.2/css/all.css' %} " >
     <!-- Google Fonts Roboto -->
@@ -41,14 +41,14 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent1">      
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-sm-0" href="{% static 'https://mdbootstrap.com/' %}">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="20"
-          alt="MDB Logo"
-          loading="lazy"
-        />
-      </a>
+      <ln class="navbar-brand mt-2 mt-sm-0" href="{% static 'https://github.com/robsen123-fexil' %}">
+    <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9mLUIUo3fkKIBXK2LtiRrDpe09HzwtI157w&usqp=CAU"
+        height="50"
+        alt="Ecommerce Logo"
+        loading="lazy"
+    />
+</ln>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       
@@ -63,32 +63,41 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'core:checkout' %} ">Checkout</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %}">Free tutorials</a>
-        </li>
+        
       </ul>
       <!-- Left links -->      
     </div>
     <!-- Collapsible wrapper -->
     
     <!-- Right elements -->
-    <div class="d-flex align-items-center">
-      <!-- Icon -->
-      <a class="nav-link me-3" href="#">
+    
+<div class="d-flex align-items-center">
+    <!-- Icon -->
+    <a class="nav-link me-3" href="#">
         <i class="fas fa-shopping-cart"></i>
         <span class="badge rounded-pill badge-notification bg-danger">1</span>
-      </a>
+    </a>
 
-      <a class="nav-link me-3" href="#">
+    <a class="nav-link me-3" href="#">
         <i class="fab fa-facebook-f"></i>
-      </a>
-      <a class="nav-link me-3" href="#">
+    </a>
+    <a class="nav-link me-3" href="#">
         <i class="fab fa-twitter"></i>
-      </a>
-      <a href="{% static 'https://github.com/mdbootstrap/bootstrap-material-design' %}" class="border rounded px-2 nav-link"
-              target="_blank">
-              <i class="fab fa-github me-2"></i>MDB GitHub
-            </a>
+    </a>
+
+    {% if request.user.is_authenticated %}
+        <div style="display: flex; align-items: center;">
+            <div style="width: 50px; height: 50px; background-color: #fff; text-align: center; line-height: 50px; color: #3498db; border-radius: 50%;">
+                🛒
+            </div>
+            <span style="margin-left: 10px; font-weight: bold;">cart</span>
+        </div>
+    {% else %}
+        <div style="width: 50px; height: 50px; background-color: #fff; text-align: center; line-height: 50px; color: #3498db; border-radius: 50%;">
+            🛒
+        </div>
+    {% endif %}
+</div>
     </div>
     <!-- Right elements -->
     
@@ -123,11 +132,11 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg" class="d-block w-100" alt="Wild Landscape"/>
+      <img src="https://cdn.shopify.com/s/files/1/0070/7032/files/business_20to_20consumer.png?v=1697741444" class="d-block w-100" alt="Wild Landscape"/>
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
       <div class="carousel-caption d-none d-sm-block mb-5">
         <h1 class="mb-4">
-                <strong>GET YOUR PRODUCT NOW </strong>
+                <strong> ORDER YOUR FAVORITE ONE </strong>
               </h1>
 
               <p>
@@ -135,13 +144,9 @@
               </p>
 
               <p class="mb-4 d-none d-md-block">
-                <strong>The most comprehensive tutorial for the Bootstrap 5. Loved by over 3 000 000 users. Video and written versions
-                  available. Create your own, stunning website.</strong>
+                <strong>"Shop effortlessly with our online ecommerce brand, delivering quality and style to your doorstep. Explore a curated selection, where convenience meets satisfaction.".</strong>
               </p>
-
-              <a target="_blank" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %}" class="btn btn-outline-white btn-lg">Start free tutorial
-                <i class="fas fa-graduation-cap ms-2"></i>
-              </a>
+              
       </div>
     </div>
     <div class="carousel-item">
@@ -161,9 +166,7 @@
                   available. Create your own, stunning website.</strong>
               </p>
 
-              <a target="_blank" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %} " class="btn btn-outline-white btn-lg">Start free tutorial
-                <i class="fas fa-graduation-cap ms-2"></i>
-              </a>
+              
       </div>
     </div>
     <div class="carousel-item">
@@ -171,21 +174,14 @@
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
       <div class="carousel-caption d-none d-md-block mb-5">
         <h1 class="mb-4">
-                <strong>Learn Bootstrap 5 with MDB</strong>
-              </h1>
-
-              <p>
-                <strong>Best & free guide of responsive web design</strong>
-              </p>
+               
 
               <p class="mb-4 d-none d-md-block">
                 <strong>The most comprehensive tutorial for the Bootstrap 5. Loved by over 3 000 000 users. Video and written versions
                   available. Create your own, stunning website.</strong>
               </p>
 
-              <a target="_blank" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %}" class="btn btn-outline-white btn-lg">Start free tutorial
-                <i class="fas fa-graduation-cap ms-2"></i>
-              </a>
+             
       </div>
     </div>
   </div>
@@ -356,11 +352,7 @@
   
   <!--Call to action-->
     <div class="pt-4 pb-2">
-      <a class="btn btn-outline-white footer-cta mx-2" href="{% static 'https://mdbootstrap.com/docs/jquery/getting-started/download/ '%}" target="_blank" role="button">Download MDB
-        <i class="fas fa-download ms-2"></i>
-      </a>
-      <a class="btn btn-outline-white footer-cta mx-2" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %}" target="_blank" role="button">Start free tutorial
-        <i class="fas fa-graduation-cap ms-2"></i>
+      
       </a>
     </div>
     <!--/.Call to action-->
@@ -430,8 +422,8 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #E0E0E0">
-    © 2022 Copyright:
-    <a class="text-white" href="{% static 'https://mdbootstrap.com/' %}">MDBootstrap.com</a>
+    © 2024 Copyright:
+    <a class="text-white" href="{% static 'https://mdbootstrap.com/' %}">RobsenOnlineEcommerce.Com
   </div>
   <!-- Copyright -->
 </footer>

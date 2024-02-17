@@ -39,6 +39,7 @@ def add_to_cart(request, slug):
             messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART ")
             orderuser.items.add(order_item)
             messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART")
+            return redirect("core:product", slug=slug)
     else:
         order_date = timezone.now()
         neworder = order.objects.create(user=request.user, ordered_date=order_date)
