@@ -73,4 +73,8 @@ def remove_from_cart(request, slug):
          redirect("core:product", slug=slug)
 
     return redirect("core:product", slug=slug)
-
+def login_view(request):
+    if request=="POST":
+        
+      
+    return render(request, 'login.html')

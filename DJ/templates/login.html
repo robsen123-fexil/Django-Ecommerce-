@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Karakter encoding -->
+    <meta charset="utf-8">
+    <!-- Perintah agar lebar viewport mengikuti lebar perangkat dan skala mengikuti ukuran ketika web di-load -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page Ep. 3</title>
+    
+    <!-- Load Bootstrap stylesheet from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- Load local static files -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <style>
+        .background-image {
+            background-image: url('https://marketplace.canva.com/EAE72jfknRM/2/0/1600w/canva-yellow-and-black-online-shop-business-logo-AvRZNVCTIeg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background-image img {
+            border-radius: 0%;
+            height: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="card card-login">
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="background-image">
+                            <div class="w-100 text-center">
+                               
+                            </div>
+                            
+                        </div>
+						
+                    </div>
+					<div class="col-lg-6 col-md-12">
+                        <div class="padding">
+                            <h2>Login</h2>
+							
+                            <p class="lead">Before you get started, you must login or register if you don't already have an account.</p>
+                            <button class="btn btn-block btn-icon btn-icon-google mb-3">
+                                    Login With Google
+                                </button>
+							<form autocomplete="off">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username" tabindex="1">
+                                </div>
+                                <div class="form-group">
+                                    <label class="d-block" for="password">
+                                        Password
+                                        <div class="float-right">
+                                            <a href="#">Forgot Password?</a>
+                                        </div>
+                                    </label>
+                                    <input type="password" name="password" class="form-control" id="password" tabindex="2">
+                                </div>
+                                <div class="form-group text-right">
+                                    <div class="float-left mt-2">
+                                        <a href="#">Create an account?</a>
+                                    </div>
+                                    <button class="btn btn-primary" tabindex="3">
+                                        Login
+                                    </button>
+									
+                                </div>
+								<ul>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul>
+								
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="padding">
+                           
+                            </form>
+							<div class="help-links">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+    </div>
+	
+
+    <!-- Load local static files -->
+    <script src="{% static 'js/particles.js' %}"></script>
+    <script>
+        particlesJS.load('particles-js', '{% static "particlesjs-config.json" %}', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+</body>
+</html>
