@@ -24,6 +24,7 @@ def checkout(request):
     return render(request, 'checkout.html',context)
 class homeview(ListView):
     model=items
+    paginate_by=1
     template_name='home.html'
 def add_to_cart(request, slug):
     item = get_object_or_404(items, slug=slug)
@@ -81,11 +82,8 @@ def login_view(request):
         password=request.POST['password']
         remember_me=request.POST.get('remember_me', False)
         user=authenticate(request, username=username, password=password)
-        if user.username=='admin' and user.password=='1234':
-            return render(request, 'home.html')
         if user is not None:
             login(request, user)
-            return redirect('home')
         
 
         else:
@@ -103,15 +101,15 @@ def signup(request):
        
         if password==password2:
             if User.objects.filter(username=username).exists():
-                messages.error(request, 'Username is Taken')
-                return redirect ('home')
+                messages.error(request, "password is not same")
+                return redirect ('homeview')
             if User.objects.filter(email=email).exists():
-                messages.error(request, 'email is already taken')
-                return redirect('home')
+                messages.error(request, "email is already taken ")
+                return redirect('homeview')
             else:
                 user=User.objects.create_user(username=username, password=password)
                 user.save()
-                return redirect('home')
+                return redirect('homeview')
         else:
             messages.error(request, 'Password is not same ')
 
