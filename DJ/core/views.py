@@ -102,10 +102,10 @@ def signup(request):
         email=request.POST['email']
        
         if password==password2:
-            if User.object.filter(username=username).exists():
+            if User.objects.filter(username=username).exists():
                 messages.error(request, 'Username is Taken')
                 return redirect ('home')
-            if User.object.filter(email=email).exists():
+            if User.objects.filter(email=email).exists():
                 messages.error(request, 'email is already taken')
                 return redirect('home')
             else:
