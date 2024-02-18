@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <title>Admin Home Page</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Your additional styles here */
+        body {
+            background-color: #223f5c;
+        }
+
+        .container {
+            background-color: #6e6767;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #f1f3f5;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #121212;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #f8f9fa;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0d0d0d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+
+    </nav>
+
+    <!-- Main Content-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <!-- Page Header-->
+            <header class="masthead" style="background-image: url('assets/img/about-bg.jpg');">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-2 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>Add Student</h1>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <p style="color: red; font-size: 36px; font-weight: bold;">{{ message }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                                <h1> Add User </h1>
+                                <span class="subheading">This is what I do.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Admin Post Form -->
+
+            <!-- Student Registration Form -->
+            <div class="container px-4 px-lg-5">
+                
+                <form method="post" action="{% url 'core:signup' %}">
+                    
+
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="password">Temporary Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Confirm Temporary Password:</label>
+                        <input type="password" id="password2" name="password2" required>
+                    </div>
+                     
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <!-- Add other fields for User_ID, Phone_number, Gender, and Department as needed -->
+                    <button type="submit">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer-->
+ <!-- Footer-->
+<footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="https://github.com/yourgithubprofile" target="_blank">
+                            <i class="fab fa-github fa-2x" style="color: black;"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://facebook.com/yourfacebookprofile" target="_blank">
+                            <i class="fab fa-facebook fa-2x" style="color: black;"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://linkedin.com/in/yourlinkedinprofile" target="_blank">
+                            <i class="fab fa-linkedin fa-2x" style="color: black;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

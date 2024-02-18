@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, redirect
 from .models import items, order, orderitem
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
-
+from django.contrib.auth.models import User, auth
 class products(ListView):
     model=items
     template_name='product.html'
@@ -76,9 +76,9 @@ def remove_from_cart(request, slug):
 
     return redirect("core:product", slug=slug)
 def login_view(request):
-    if request=="POST":
-        username=request.POST[username]
-        password=request.POST[password]
+    if request=='POST':
+        username=request.POST['username']
+        password=request.POST['password']
         remember_me=request.POST.get('remember_me', False)
         user=authenticate(request, username=username, password=password)
         if user.username=='admin' and user.password=='1234':
@@ -93,3 +93,27 @@ def login_view(request):
     return render(request, 'login.html')
 def logout(request ):
     return render(request , "login.html")
+
+def signup(request):
+    if request.method=='POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        password2=request.POST['password2']
+        email=request.POST['email']
+       
+        if password==password2:
+            if User.object.filter(username=username).exists():
+                messages.error(request, 'Username is Taken')
+                return redirect ('home')
+            if User.object.filter(email=email).exists():
+                messages.error(request, 'email is already taken')
+                return redirect('home')
+            else:
+                user=User.objects.create_user(username=username, password=password)
+                user.save()
+                return redirect('home')
+        else:
+            messages.error(request, 'Password is not same ')
+
+    else:    
+       return render(request, 'signup.html')
