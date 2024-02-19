@@ -24,7 +24,7 @@ def checkout(request):
     return render(request, 'checkout.html',context)
 class homeview(ListView):
     model=items
-    paginate_by=1
+    paginate_by=2
     template_name='home.html'
 def add_to_cart(request, slug):
     item = get_object_or_404(items, slug=slug)

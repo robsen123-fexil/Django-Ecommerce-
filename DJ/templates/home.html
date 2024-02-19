@@ -1,8 +1,9 @@
 
 
 
+{% load template_cart_tag %}
+{% load static %}'
 
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +91,7 @@
             <div style="width: 50px; height: 50px; background-color: #fff; text-align: center; line-height: 50px; color: #3498db; border-radius: 50%;">
                 🛒
             </div>
+            <span class = "badge red z-depth-1 mr-1 ">{{request.user |cart_count}} </span>
             <span style="margin-left: 10px; font-weight: bold;">cart</span>
            
         </div>
@@ -103,7 +105,6 @@
             🛒
         </div>
         </div>
-            <span style="margin-left: 10px; font-weight: bold;">cart</span>
 
          <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'core:login_view' %}">
                       LOGIN 
@@ -341,25 +342,27 @@
 </section>
   
 <!-- Pagination -->
+{%if is_paginated%}
   <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
   <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="" aria-label="Previous">
+  {%if page_obj.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{page_obj.previous_page_number}}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="page-item active"><a class="page-link" href="{ % static '#' %}">1</a></li>
-    <li class="page-item"><a class="page-link" href="{% static '#' %}">2</a></li>
-    <li class="page-item"><a class="page-link" href="{% static '#' %}">3</a></li>
-    <li class="page-item"><a class="page-link" href="{% static '#' %}">4</a></li>
-    <li class="page-item"><a class="page-link" href="{% static '#' %}">5</a></li>
-    <li class="page-item">
-      <a class="page-link" href="{% static '#' %}" aria-label="Next">
+    {%endif%}
+    <li class="page-item active"><a class="page-link" href="?page={{ page_obj.number }}"> {{page_obj.number}} </a></li>
+    
+    {%if page_obj.has_next%}
+      <a class="page-link" href="?page={{page_obj.next_page_number}}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
+      {%endif%}
     </li>
   </ul>
 </nav>  
+{%endif%}
 <!-- Pagination -->  
 </div>
 </main>
