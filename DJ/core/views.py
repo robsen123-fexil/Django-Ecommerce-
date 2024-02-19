@@ -43,7 +43,6 @@ def add_to_cart(request, slug):
             order_item.save()
             messages.info(request, "THE PRODUCT IS  UPDATED ")
         else:
-            messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART ")
             orderuser.items.add(order_item)
             messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART")
             return redirect("core:product", slug=slug)
@@ -62,10 +61,9 @@ def remove_from_cart(request, slug):
     if order_qs.exists():
         orderuser = order_qs[0]
         if orderuser.items.filter(item__slug=item.slug).exists():
-            
-            order_item = orderitem.objects.filter(item=item, user=request.user, ordered=False).first()
-            order_item.quality -= 1
-            order_item.save()
+            order_item = orderitem.objects.filter(item=item, user=request.user, ordered=False)[0]
+            orderuser.items.remove(order_item)
+            order_item.delete()
             messages.info(request, "THE PRODUCT IS REMOVED FROM YOUR CART ")
             if order_item:
                 orderuser.items.remove(order_item)
