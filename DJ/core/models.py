@@ -51,7 +51,7 @@ class orderitem(models.Model):
     quality =models.IntegerField(default=2)
     def __str__(self):
         return f"{self.quality} of {self.item.title}"
-    
+     
 class order(models.Model):
      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
      items = models.ManyToManyField(orderitem)

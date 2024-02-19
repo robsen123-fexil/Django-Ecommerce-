@@ -39,8 +39,8 @@ def add_to_cart(request, slug):
     if order_qs.exists():
         orderuser = order_qs[0]
         if orderuser.items.filter(item__slug=item.slug).exists():
-            orderuser.quality += 1
-            orderuser.save()
+            order_item.quality += 1
+            order_item.save()
             messages.info(request, "THE PRODUCT IS  UPDATED ")
         else:
             messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART ")
