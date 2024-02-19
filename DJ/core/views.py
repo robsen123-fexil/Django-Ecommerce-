@@ -1,5 +1,5 @@
 from django.shortcuts import render , get_object_or_404
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView, View 
 from .models import items , orderitem , order
 from django.shortcuts import redirect
 from django.utils import timezone
@@ -8,6 +8,9 @@ from .models import items, order, orderitem
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User, auth
+from django.views.generic import View
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.decorators import login_required
 class products(ListView):
     model=items
     template_name='product.html'
@@ -26,6 +29,7 @@ class homeview(ListView):
     model=items
     paginate_by=2
     template_name='home.html'
+   
 def add_to_cart(request, slug):
     item = get_object_or_404(items, slug=slug)
     order_item, created = orderitem.objects.get_or_create(item=item , user=request.user, ordered=False)
@@ -35,8 +39,8 @@ def add_to_cart(request, slug):
     if order_qs.exists():
         orderuser = order_qs[0]
         if orderuser.items.filter(item__slug=item.slug).exists():
-            order_item.quality += 1
-            order_item.save()
+            orderuser.quality += 1
+            orderuser.save()
             messages.info(request, "THE PRODUCT IS  UPDATED ")
         else:
             messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART ")
@@ -76,6 +80,7 @@ def remove_from_cart(request, slug):
          redirect("core:product", slug=slug)
 
     return redirect("core:product", slug=slug)
+
 def login_view(request):
     if request=='POST':
         username=request.POST['username']
@@ -111,7 +116,21 @@ def signup(request):
                 user.save()
                 return redirect('homeview')
         else:
-            messages.error(request, 'Password is not same ')
+            messages.error(request, "password is not same ")
 
     else:    
        return render(request, 'signup.html')
+
+class cart_summary(View):
+    template_name='cart_summary.html'
+    def get(self, *args, **kwargs):
+          try:
+              ordercart=order.objects.get(user=self.request.user, ordered=False)
+              context={
+                   'object': ordercart,
+              }
+              return render(self.request, 'cart_summary.html', context)
+          except ObjectDoesNotExist: 
+             messages.error(self.request ,  "YOU DONT HAVE AN ACTIVE ORDERS")
+             return redirect('/')     
+          

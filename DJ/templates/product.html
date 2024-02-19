@@ -60,6 +60,14 @@
                 <i class="fas fa-shopping-cart"></i>
                 <span class="badge rounded-pill badge-notification bg-danger">{{request.user| cart_count}}</span>
             </a>
+            <div>
+        <a href="{%url 'core:cart_summary' %}">
+        <div style="width: 50px; height: 50px; background-color: #fff; text-align: center; line-height: 50px; color: #3498db; border-radius: 50%;">
+            🛒
+        </div>
+        </a>
+</div>
+
 
             <a class="nav-link me-3" href="#">
                 <i class="fab fa-facebook-f"></i>

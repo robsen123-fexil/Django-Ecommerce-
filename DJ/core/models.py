@@ -23,7 +23,7 @@ class items(models.Model):
     date=models.DateField(default= timezone.now)
     description=models.CharField(max_length=10000)
     forsell=models.CharField(max_length=100)
-    quantity=models.IntegerField(default=1)
+    quantity=models.IntegerField(default=2)
     def __str__(self):
         return self.title
     def get_absolute_url(self):
@@ -38,11 +38,17 @@ class items(models.Model):
         return reverse("core:remove_from_cart",kwargs={
             'slug':self.slug
         })
+    def get_total_price(self):
+        return self.quantity*self.price
+    def get_total_discount(self):
+        return self.quantity*self.discount_price
+    def get_quantity(self):
+        return self.quantity
 class orderitem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , blank=True, null=True)
     ordered=models.BooleanField(default=False)
     item=models.ForeignKey(items, on_delete=models.CASCADE)    
-    quality =models.IntegerField(default=1)
+    quality =models.IntegerField(default=2)
     def __str__(self):
         return f"{self.quality} of {self.item.title}"
     

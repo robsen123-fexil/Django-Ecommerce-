@@ -88,11 +88,16 @@
 
     {% if request.user.is_authenticated %}
         <div style="display: flex; align-items: center;">
-            <div style="width: 50px; height: 50px; background-color: #fff; text-align: center; line-height: 50px; color: #3498db; border-radius: 50%;">
-                🛒
-            </div>
+           <div>
+    <a href="{% url 'core:cart_summary' %}">
+        <div style="width: 50px; height: 50px; background-color: #fff; text-align: center; line-height: 50px; color: #3498db; border-radius: 50%;">
+            🛒
+        </div>
+    </a>
+</div>
+
             <span class = "badge red z-depth-1 mr-1 ">{{request.user |cart_count}} </span>
-            <span style="margin-left: 10px; font-weight: bold;">cart</span>
+            <span href="{url 'core:cart_summary'}"style="margin-left: 10px; font-weight: bold;">cart</span>
            
         </div>
         <div>
