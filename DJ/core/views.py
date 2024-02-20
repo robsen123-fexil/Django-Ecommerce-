@@ -11,6 +11,7 @@ from django.contrib.auth.models import User, auth
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+from .forms import checkforms
 class products(ListView):
     model=items
     template_name='product.html'
@@ -130,4 +131,16 @@ class cart_summary(View):
           except ObjectDoesNotExist: 
              messages.error(self.request ,  "YOU DONT HAVE AN ACTIVE ORDERS")
              return redirect('/')     
-          
+class checkforms(View):
+    def get(self, *args, **kwargs): 
+        forms=checkforms()
+        context={
+            'forms':forms
+        } 
+        return render(self.request, 'checkout.html' , context)
+    def post(self, *args, **kwargs):
+        forms = checkout()
+        context={
+            'forms':forms
+        }
+        return render(self.request, 'checkout.html', context)
