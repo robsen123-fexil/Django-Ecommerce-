@@ -1,6 +1,6 @@
 from django import forms
 from django_countries.fields import CountryField
-class checkforms(forms.Form):
+class checkoutforms(forms.Form):
     street_add=forms.CharField()
     apartment_add=forms.CharField(required=False)
     country=CountryField(blank_label='(select country)')
