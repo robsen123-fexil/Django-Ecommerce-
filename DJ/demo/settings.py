@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'core',
-    'django_countries'
+    'django_countries',
+     'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -93,3 +94,4 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 STATIC_URL='/static/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
