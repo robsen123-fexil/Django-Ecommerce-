@@ -28,8 +28,7 @@ def checkout(request):
 class homeview(ListView):
     model=items
     paginate_by=2
-    template_name='home.html'
-   
+    template_name='home.html'   
 def add_to_cart(request, slug):
     item = get_object_or_404(items, slug=slug)
     order_item, created = orderitem.objects.get_or_create(item=item , user=request.user, ordered=False)
