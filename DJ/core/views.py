@@ -139,6 +139,12 @@ class checkoutviews(View):
         } 
         return render(self.request, 'checkout.html' , context)
     def post(self, *args, **kwargs):
-        form = checkoutforms(self.request.POST or None)
-        if form.valid():
-            return redirect('core:checkout')
+       form = checkoutforms(self.request.POST or None)
+       if form.is_valid():
+          print(form.cleaned_data)
+          messages.info(self.request, "The checkout is in process")
+          return redirect('core:checkoutviews')
+       messages.warning(self.request, "the checkout is failed")
+       return redirect('core:checkoutviews')
+
+    
