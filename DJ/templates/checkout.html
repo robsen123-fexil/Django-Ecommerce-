@@ -57,6 +57,10 @@
         <h2 class="my-5 text-center">Checkout form</h2>
 
         <!--Grid row-->
+    <form>
+        {% csrf_token %}
+       {{forms|crispy}}
+    </form>
         <div class="row">
             <!--Grid column-->
             <div class="col-md-8 mb-4">
@@ -68,7 +72,7 @@
                         <div class="col-md-6 mb-2">
                             <!--firstName-->
                             <div class="form-outline">
-                                <input type="text" id="typeText" class="form-control" />
+                                <input type="text" id="typeText" class="form-control" />{{form.firstname}}
                                 <label class="form-label" for="typeText">First name</label>
                             </div>
                         </div>
@@ -78,7 +82,7 @@
                         <div class="col-md-6 mb-2">
                             <!--lastName-->
                             <div class="form-outline">
-                                <input type="text" id="typeText" class="form-control" />
+                                <input type="text" id="typeText" class="form-control" />{{form.lastname}}
                                 <label class="form-label" for="typeText">Last name</label>
                             </div>
                         </div>
@@ -87,15 +91,17 @@
                     <!--Grid row-->
 
                     <!--Username-->
-                   
+                  <div class="form-outline mb-4">
+                         <input type="email" class="form-control" placeholder="youremail@example.com" aria-label="youremail@example.com" aria-describedby="basic-addon1" />
+                    </div>{{form.email}}
 
-                    <!--email-->
+                    <!--address-->
                     <p class="mb-0">
-                        Email (optional)
+                        Email
                     </p>
                     <div class="form-outline mb-4">
                          <input type="email" class="form-control" placeholder="youremail@example.com" aria-label="youremail@example.com" aria-describedby="basic-addon1" />
-                    </div>
+                    </div>{{form.streetadd}}
 
                     <!--address-->
                     <p class="mb-0">
@@ -112,7 +118,7 @@
                     <!--Grid row-->
                     <div class="row">
                         <!--Grid column-->
-                        <div class="col-lg-4 col-md-12 mb-4">
+                        <div class="col-lg-4 col-md-12 mb-4"> {{form.country}}
                             <p class="mb-0">
                                 Country
                             </p>
@@ -190,6 +196,7 @@
                 </div>
                 <!--/.Card-->
             </div>
+            
             <!--Grid column-->
 
             <!--Grid column-->
