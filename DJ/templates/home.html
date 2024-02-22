@@ -284,8 +284,8 @@
         <div class="card">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
             data-mdb-ripple-color="light">
-            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg"
-              class="w-100" />
+           <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'path/to/placeholder/image.jpg' %}{% endif %}" class="w-100" />
+
             <a href="{% static '#!' %} ">  
               <div class="mask">
                 <div class="d-flex justify-content-start align-items-end h-100">

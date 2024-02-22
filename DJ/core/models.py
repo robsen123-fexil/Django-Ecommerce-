@@ -24,6 +24,8 @@ class items(models.Model):
     description=models.CharField(max_length=10000)
     forsell=models.CharField(max_length=100)
     quantity=models.IntegerField(default=2)
+    image=models.ImageField(blank=True , null= True )
+    
     def __str__(self):
         return self.title
     def get_absolute_url(self):

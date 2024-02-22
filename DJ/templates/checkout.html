@@ -58,7 +58,7 @@
         <!-- Heading -->
         <h2 class="my-5 text-center">Checkout form</h2>
 
-        <form method="POST" class= 'card-body' >
+        <form method="POST"  action="{% url 'core:checkoutviews' %}  class= 'card-body' >
             
               {%csrf_token%}
          <div class="row">
