@@ -227,7 +227,7 @@
   <div class="container-fluid">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="{% static '#' %}">Categories:</a>
+    <a class="navbar-brand" href="">Categories:</a>
 
     <!-- Toggle button -->
     <button 
@@ -250,7 +250,8 @@
           <a class="nav-link text-white" href="{% static '#' %}">All</a>
         </li>
         <li class="nav-item">
-              <a class="nav-link text-white" href="{% static '#' %}">Shirts</a>
+              <a class="nav-link text-white" href="{%url 'core:product' %}">Shirts</a>
+              
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="{% static '#' %}">Sport wears</a>
@@ -273,19 +274,15 @@
 <!-- Navbar -->
   
 <!-- Products -->
-  <section>
+<section>
   <div class="text-center">
     <div class="row">
-      
-      
       {% for product in object_list %}
       <div class="col-lg-3 col-md-6 mb-4">
-        
         <div class="card">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
             data-mdb-ripple-color="light">
-           <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'path/to/placeholder/image.jpg' %}{% endif %}" class="w-100" />
-
+            <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static 'path/to/placeholder/image.jpg' %}{% endif %}" class="w-100" />
             <a href="{% static '#!' %} ">  
               <div class="mask">
                 <div class="d-flex justify-content-start align-items-end h-100">
@@ -301,51 +298,32 @@
             <a href="{{product.get_absolute_url}}" class="text-reset">
               <h5 class="card-title mb-2">{{product.title}}</h5>
             </a>
+            <a href="{% static '' %}" class="text-reset "></a>
             <a href="{% static '' %}" class="text-reset ">
-              <p>{{product.categories}}</p>
+              <p>
+                <span style="color: {% if product.forsell %}green{% else %}red{% endif %};">
+                  {{product.forsell}}
+                </span>
+              </p>
             </a>
-            <a href="{% static '' %}" class="text-reset ">
-              <p>{{product.description}}</p>
-              <p>For Sell: {{product.forsell}}</p>
-            </a>
-            <h6 class="mb-3 price">$
-            {% if product.discount_price%}  
-            {{product.discount_price}}
-            {%else%}
-            {{product.price}}
-            
-            {%endif %}
-            
-
-                                         
-                                         
-                                         
-                                         
-             </h6>
+            <h6 class="mb-3 price" style="color: blue;">$
+              {% if product.discount_price %}  
+              {{product.discount_price}}
+              {% else %}
+              {{product.price}}
+              {% endif %}
+            </h6>
           </div>
         </div>
-        
       </div>
       {% endfor %}
-      
-
-      
-
-    <div class="row">
-      
-      
-
-      
-        
-      
-      
-
-      
-      </div>
     </div>
   </div>
 </section>
-  
+
+<!-- Pagination -->
+
+
 <!-- Pagination -->
 {%if is_paginated%}
   <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
