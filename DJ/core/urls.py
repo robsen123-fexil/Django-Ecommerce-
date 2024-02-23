@@ -11,7 +11,8 @@ from .views import (
     login_view,
     logout,
     signup,
-    cart_summary
+    cart_summary,
+    shirt ,
 
 )
 app_name='core'
@@ -28,5 +29,6 @@ urlpatterns = [
     path('login_view/', login_view , name='login_view'),
     path('logout/' , logout, name='logout'),
     path('signup/', signup, name='signup'),
-    path('cart_summary/' , cart_summary.as_view(), name='cart_summary')
+    path('cart_summary/' , cart_summary.as_view(), name='cart_summary'),
+    path('shirt/',  shirt , name='shirt'),
 ]

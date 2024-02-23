@@ -98,6 +98,7 @@
               <div class="col-md-6 mb-4">
                 <div class="p-4">
                     <div class="mb-3">
+                    {%if product.title == 'T-Shirt' %}{{product.title }} {%else%}{{product.title}}
                         <a href="">
                           <img src="{% if product.image %}{{ product.image.url }}{% else %}{{product.image}}{% endif %}" class="img-fluid" alt="" />
                             <span class="badge bg-dark me-1">{{product.categories}}</span>
@@ -218,7 +219,6 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #e0e0e0;">
         © 2022 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
     </div>
     <!-- Copyright -->
 </footer>
