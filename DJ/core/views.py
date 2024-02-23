@@ -146,6 +146,8 @@ class checkoutviews(View):
           return redirect('core:checkoutviews')
        messages.warning(self.request, "the checkout is failed")
        return redirect('core:checkoutviews')
-def shirt(request):
-    return render(request, "shirts.html")
+def shirt(request, title ):
+    tshirt_items=items.objects.filter(title='T-Shirt')
+    context={'items':tshirt_items}
+    return render(request, "shirts.html" , context)
     

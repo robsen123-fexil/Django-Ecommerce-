@@ -3,9 +3,9 @@ from django.conf import settings
 from django.shortcuts import reverse
 from django.utils import timezone
 from django.template.defaultfilters import slugify
-CATEGORIES_CHOICE=(('S', 'shirts'), 
-                   ('SW', 'sportshirt') , 
-                   ('OW','outwear')
+CATEGORIES_CHOICE=(('Ss', 'shirts'), 
+                   ('S', 'sportshirt') , 
+                   ('O','outwear')
                    )
 LABEL_CHOICES=(('p','primary'),
                 ('s','secondary'),

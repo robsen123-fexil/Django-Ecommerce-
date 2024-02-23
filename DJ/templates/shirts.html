@@ -94,30 +94,27 @@
 
             <!--Grid column-->
                              
-            {%for product in object_list %}
+            {%for product in items %}
               <div class="col-md-6 mb-4">
                 <div class="p-4">
                     <div class="mb-3">
-                    {%if product.title == 'T-Shirt' %}{{product.title }} {%else%}{{product.title}}
                         <a href="">
                           <img src="{% if product.image %}{{ product.image.url }}{% else %}{{product.image}}{% endif %}" class="img-fluid" alt="" />
-                            <span class="badge bg-dark me-1">{{product.categories}}</span>
                         </a>
 
-                        <a  href="" <span class ="badge bg-dark me-1 ">{{product.price}}</span>
-                        </a>
-                        <a  href="" <span class ="badge bg-dark me-1 ">{{product.discount_price}}</span>
-                        </a>
-                    </div>
-
-                    <p class="lead">
-                        <span class="me-1">
+                        <a  class="mb-3" {{product.title}} </a>
                          {%if product.discount_price%}
                             <del>{{product.discount_price}}</del>
                         </span>
                         {%else%}
                         <span>{{product.price}}</span>
                         {%endif %}
+                         </a>
+                    </div>
+
+                    <p class="lead">
+                        <span class="me-1">
+                        
                     </p>
                     <strong><p style="font-size: 20px;">Description</p></strong>
                     <p>{{product.description}}</p>

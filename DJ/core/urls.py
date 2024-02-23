@@ -30,5 +30,5 @@ urlpatterns = [
     path('logout/' , logout, name='logout'),
     path('signup/', signup, name='signup'),
     path('cart_summary/' , cart_summary.as_view(), name='cart_summary'),
-    path('shirt/',  shirt , name='shirt'),
+    path('shirt/' , shirt, {'title': 'T-Shirt'}, name='shirt' )
 ]
