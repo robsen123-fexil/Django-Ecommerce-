@@ -3,22 +3,17 @@ from django.conf import settings
 from django.shortcuts import reverse
 from django.utils import timezone
 from django.template.defaultfilters import slugify
-CATEGORIES_CHOICE=(('Ss', 'shirts'), 
-                   ('S', 'sportshirt') , 
-                   ('O','outwear')
-                   )
-LABEL_CHOICES=(('p','primary'),
-                ('s','secondary'),
-                  ('d', 'danger')
-                  
-                  )
+CATEGORIES_CHOICE=(('T', 'shirts'), 
+                   ('E', 'Electronics') , 
+                   ('SW','SportWear')
+)
+
                    
 class items(models.Model):
     title=models.CharField(max_length=200)
     price=models.FloatField()
     discount_price=models.FloatField(blank=True, null=True)
     categories=models.CharField(choices=CATEGORIES_CHOICE, max_length=2)
-    label=models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug=models.SlugField()
     date=models.DateField(default= timezone.now)
     description=models.CharField(max_length=10000)
@@ -46,6 +41,8 @@ class items(models.Model):
         return self.quantity*self.discount_price
     def get_quantity(self):
         return self.quantity
+    
+    
 class orderitem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , blank=True, null=True)
     ordered=models.BooleanField(default=False)

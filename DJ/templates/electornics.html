@@ -1,3 +1,4 @@
+                         </a>
 {%load template_cart_tag%}
 <div class="mt-2 pt-4">
        {% if messages %}
@@ -98,6 +99,7 @@
               <div class="col-md-6 mb-4">
                 <div class="p-4">
                     <div class="mb-3">
+                    {%if product.categories == 'Electronics' %}
                         <a href="">
                           <img src="{% if product.image %}{{ product.image.url }}{% else %}{{product.image}}{% endif %}" class="img-fluid" alt="" />
                         </a>
@@ -110,6 +112,7 @@
                         {%endif %}
                          </a>
                     </div>
+                    {%endif%}
 
                     <p class="lead">
                         <span class="me-1">
