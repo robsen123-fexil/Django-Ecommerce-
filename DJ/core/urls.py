@@ -15,7 +15,8 @@ from .views import (
     Sportwear,
     
     electronics,
-    shirts
+    shirts,
+    searchitem
 
 )
 app_name='core'
@@ -34,6 +35,7 @@ urlpatterns = [
     path('cart_summary/' , cart_summary.as_view(), name='cart_summary'),
     path('Sportwear/' , Sportwear , name='Sportwear'),
     path('elecctronics' , electronics, name='electronics'),
-    path('shirts', shirts , name='shirts')
+    path('shirts', shirts , name='shirts'),
+    path('searchitem/' , searchitem.as_view() , name='searchitem' )
 
 ]

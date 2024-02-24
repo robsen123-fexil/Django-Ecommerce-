@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render , get_object_or_404
 from django.views.generic import ListView,DetailView, View 
 from .models import items , orderitem , order
@@ -163,3 +165,14 @@ def shirts(request):
 
     }
     return render(request, 'shirts.html' , context)
+class searchitem(ListView):
+    model = items
+    template_name = 'home.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q', '')
+        if query:
+            return items.objects.filter(title__icontains=query).order_by('-date')
+        else:
+            return items.objects.none()
