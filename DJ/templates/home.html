@@ -245,10 +245,10 @@
 
       
         <li class="nav-item acitve">
-          <a class="nav-link text-white" href="{% static '#' %}">All</a>
+          <a class="nav-link text-white" >All</a>
         </li>
     <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'core:shirt' %}">Tshirts
+        <a class="nav-link text-white" href="{% url 'core:shirts'%}">Tshirts
         
         </a>
     </li>
@@ -257,22 +257,22 @@
             
 
 
+            
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'core:Electronics' %}">Electronics</a>
+              <a class="nav-link text-white" href="{% url 'core:Sportwear'%}">SportWear's</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'core:electcategories'%}">Outwears</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'core:elec'%}">Electronics</a>
+              <a class="nav-link text-white" href="{% url 'core:electronics'%}">Electronics</a>
             </li>
 
       </ul>
     
 
       <!-- Search -->
-      <form class="w-auto py-1" style="max-width: 12rem">
-        <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search">
+      <form action="" method="get">
+      {%csrf_token%}
+        <input type="search" name='q' placeholder="Search" aria-label="Search">
+        <button type="submit">Search</button>
       </form>
 
     </div>

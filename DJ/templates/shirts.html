@@ -1,3 +1,4 @@
+                         </a>
 {%load template_cart_tag%}
 <div class="mt-2 pt-4">
        {% if messages %}
@@ -30,8 +31,12 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
             <!-- Navbar brand -->
-            <a class="navbar-brand mt-2 mt-sm-0" href="https://mdbootstrap.com/">
-                <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="20" alt="MDB Logo" loading="lazy" />
+            <a class="navbar-brand mt-2 mt-sm-0" href="https://github.com/robsen123-fexil">
+                 <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9mLUIUo3fkKIBXK2LtiRrDpe09HzwtI157w&usqp=CAU"
+        height="50"
+        alt="Ecommerce Logo"
+        loading="lazy"
             </a>
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -93,128 +98,111 @@
             <!--Grid column-->
 
             <!--Grid column-->
-                             
-            {%for product in items %}
-              <div class="col-md-6 mb-4">
-                <div class="p-4">
-                    <div class="mb-3">
-                        <a href="">
-                          <img src="{% if product.image %}{{ product.image.url }}{% else %}{{product.image}}{% endif %}" class="img-fluid" alt="" />
-                        </a>
-                        <strong><p style="font-size: 20px;">{{product.title}}</p></strong>
-                         {%if product.discount_price%}
-                            <del>{{product.discount_price}}</del>
-                        </span>
-                        {%else%}
-                        <span>{{product.price}}</span>
-                        {%endif %}
-                         </a>
-                    </div>
+           <!-- Main layout -->
+<main class="container mt-5">
+    <!-- Product grid -->
+    <div class="row">
+        {% for product in items %}
+            {% if product.categories == 'T-shirt' %}
+                <div class="col-md-6 mb-4">
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <a href="">
+                                <img src="{% if product.image %}{{ product.image.url }}{% else %}{{ product.image }}{% endif %}" class="img-fluid" alt="" />
+                            </a>
+                            <strong><p style="font-size: 20px;">{{ product.title }}</p></strong>
+                            {% if product.discount_price %}
+                                <del>{{ product.discount_price }}</del>
+                            {% else %}
+                                <span>{{ product.price }}</span>
+                                <span>{{ product.categories }}</span>
+                            {% endif %}
+                        </div>
 
-                    <p class="lead">
-                        <span class="me-1">
+                        <p class="lead">
+                            <span class="me-1"></span>
+                        </p>
+                        <strong><p style="font-size: 20px;">Description</p></strong>
+                        <p>{{ product.description }}</p>
                         
-                    </p>
-                    <strong><p style="font-size: 20px;">Description</p></strong>
-                    <p>{{product.description}}</p>
-                    <form class="d-flex justify-content-left">
-                     <a href={{product.get_add_to_cart_url}} class="btn btn-primary ms-1">
-                            Add to cart
-                    </a>
-                     <a href={{product.get_remove_from_cart_url}} class="btn btn-danger ms-1">
-                            remove from cart
-                    </a>
-                    </form>
+                        <form class="d-flex justify-content-left">
+                            <a href="{{ product.get_add_to_cart_url }}" class="btn btn-primary ms-1">
+                                Add to cart
+                            </a>
+                            <a href="{{ product.get_remove_from_cart_url }}" class="btn btn-danger ms-1">
+                                Remove from cart
+                            </a>
+                        </form>
+                    </div>
                 </div>
-              </div>
-            {% endfor %}
-            
-        </div>
-        <!--Grid row-->
-
-        <hr />
-
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-            <!--Grid column-->
-            <div class="col-md-6 text-center">
-                <h4 class="my-4 h4">Additional information</h4>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit voluptates, quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
-            </div>
-            <!--Grid column-->
-        </div>
-        <!--Grid row-->
-
-        <!--Grid row-->
-        <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-12 mb-4">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="" />
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="" />
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="" />
-            </div>
-            <!--Grid column-->
-        </div>
-        <!--Grid row-->
+            {% endif %}
+        {% endfor %}
     </div>
-</main>
-<!--Main layout-->
+    <!-- End Product grid -->
 
-<!-- footer -->
+    <hr />
+
+    <!-- Additional information -->
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 text-center">
+            <h4 class="my-4 h4">Additional information</h4>
+           
+        </div>
+    </div>
+    <!-- End Additional information -->
+
+    <!-- Image grid -->
+    <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4">
+            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="" />
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="" />
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="" />
+        </div>
+    </div>
+    <!-- End Image grid -->
+</main>
+<!-- End Main layout -->
+
+<!-- Footer -->
 <footer class="text-center text-white mt-4" style="background-color: #607d8b;">
-    <!--Call to action-->
+    <!-- Call to action -->
     <div class="pt-4 pb-2">
         <a class="btn btn-outline-white footer-cta mx-2" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank" role="button">
-            Download MDB
+            
             <i class="fas fa-download ms-2"></i>
         </a>
         <a class="btn btn-outline-white footer-cta mx-2" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">
-            Start free tutorial
+           
             <i class="fas fa-graduation-cap ms-2"></i>
         </a>
     </div>
-    <!--/.Call to action-->
+    <!-- End Call to action -->
 
     <hr class="text-dark" />
 
     <div class="container">
-        <!-- Section: Social media -->
+        <!-- Social media section -->
         <section class="mb-3">
-            <!-- Facebook -->
+            <!-- Social media icons -->
             <a class="btn-link btn-floating btn-lg text-white" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
-
-            <!-- Twitter -->
             <a class="btn-link btn-floating btn-lg text-white" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
-
-            <!-- Google -->
             <a class="btn-link btn-floating btn-lg text-white" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
-
-            <!-- Instagram -->
             <a class="btn-link btn-floating btn-lg text-white" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
-
-            <!-- YouTube -->
             <a class="btn-link btn-floating btn-lg text-white" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-youtube"></i></a>
-            <!-- Github -->
             <a class="btn-link btn-floating btn-lg text-white" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
         </section>
-        <!-- Section: Social media -->
+        <!-- End Social media section -->
     </div>
-    <!-- Grid container -->
+    <!-- End Grid container -->
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #e0e0e0;">
         © 2022 Copyright:
     </div>
-    <!-- Copyright -->
+    <!-- End Copyright -->
 </footer>
+<!-- End Footer -->

@@ -38,7 +38,6 @@
         alt="Ecommerce Logo"
         loading="lazy"
             </a>
-            <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item active">
                     <a class="nav-link" href="{%url 'core:home'%}">Home</a>
@@ -103,7 +102,7 @@
     <!-- Product grid -->
     <div class="row">
         {% for product in items %}
-            {% if product.categories == 'Electronics' %}
+            {% if product.categories == 'SportWear' %}
                 <div class="col-md-6 mb-4">
                     <div class="p-4">
                         <div class="mb-3">
@@ -146,7 +145,6 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-6 text-center">
             <h4 class="my-4 h4">Additional information</h4>
-       
         </div>
     </div>
     <!-- End Additional information -->
@@ -171,12 +169,11 @@
 <footer class="text-center text-white mt-4" style="background-color: #607d8b;">
     <!-- Call to action -->
     <div class="pt-4 pb-2">
-        <a class="btn btn-outline-white footer-cta mx-2" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank" role="button">
-            Download MDB
+      
             <i class="fas fa-download ms-2"></i>
         </a>
         <a class="btn btn-outline-white footer-cta mx-2" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">
-            Start free tutorial
+            
             <i class="fas fa-graduation-cap ms-2"></i>
         </a>
     </div>

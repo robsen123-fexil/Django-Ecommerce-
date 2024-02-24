@@ -12,10 +12,10 @@ from .views import (
     logout,
     signup,
     cart_summary,
-    shirt ,
-    Electronics,
-    electcategories,
-    elec
+    Sportwear,
+    
+    electronics,
+    shirts
 
 )
 app_name='core'
@@ -32,8 +32,8 @@ urlpatterns = [
     path('logout/' , logout, name='logout'),
     path('signup/', signup, name='signup'),
     path('cart_summary/' , cart_summary.as_view(), name='cart_summary'),
-    path('shirt/' , shirt, name='shirt' ),
-    path('Electronics/' , Electronics, name= 'Electronics'),
-    path('electcategories/' , electcategories , name='electcategories'),
-    path('elec' , elec, name='elec')
+    path('Sportwear/' , Sportwear , name='Sportwear'),
+    path('elecctronics' , electronics, name='electronics'),
+    path('shirts', shirts , name='shirts')
+
 ]

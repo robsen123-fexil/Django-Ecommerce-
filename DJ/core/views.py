@@ -146,26 +146,20 @@ class checkoutviews(View):
           return redirect('core:checkoutviews')
        messages.warning(self.request, "the checkout is failed")
        return redirect('core:checkoutviews')
-def shirt(request):
-    tshirt_items=items.objects.filter(title='T-Shirt')
-    context={'items':tshirt_items}
-    return render(request, "shirts.html" , context)
-def Electronics(request):
-    electronics = items.objects.filter(title__in=['Television', 'Laptop'])
 
-    context ={
-        'items': electronics
+def electronics(request):
+    context={
+        'items':items.objects.all()
     }
     return render(request, 'electornics.html' , context)
-def electcategories(request , category):
-    electitems=items.objects.filter(categories=category)
+def Sportwear(request):
     context={
-        'items':electitems ,'category':category
+        'items':items.objects.all()
     }
-    return render(request, 'electronics.html' , context)
-def elec(request):
-    itemscate=items.objects.filter('categories':categories)
+    return render(request, 'Sportswear.html' , context)
+def shirts(request):
     context={
-        'items':itemscate
+        'items':items.objects.all()
+
     }
-    return render(request, 'electornics.html' , context)
+    return render(request, 'shirts.html' , context)

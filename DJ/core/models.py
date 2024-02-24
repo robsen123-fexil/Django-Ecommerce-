@@ -3,9 +3,9 @@ from django.conf import settings
 from django.shortcuts import reverse
 from django.utils import timezone
 from django.template.defaultfilters import slugify
-CATEGORIES_CHOICE=(('T', 'shirts'), 
-                   ('E', 'Electronics') , 
-                   ('SW','SportWear')
+CATEGORIES_CHOICE=(('T-shirt', 'shirts'), 
+                   ('Electronics', 'Electronics') , 
+                   ('SportWear','SportWear')
 )
 
                    
@@ -13,7 +13,7 @@ class items(models.Model):
     title=models.CharField(max_length=200)
     price=models.FloatField()
     discount_price=models.FloatField(blank=True, null=True)
-    categories=models.CharField(choices=CATEGORIES_CHOICE, max_length=2)
+    categories=models.CharField(choices=CATEGORIES_CHOICE, max_length=20)
     slug=models.SlugField()
     date=models.DateField(default= timezone.now)
     description=models.CharField(max_length=10000)
