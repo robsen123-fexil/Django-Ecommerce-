@@ -8,15 +8,16 @@ from .views import (
     productall,
     add_to_cart,
     remove_from_cart,
-    login_view,
+   
     logout,
-    signup,
+  login_view,
     cart_summary,
     Sportwear,
     
     electronics,
     shirts,
-    searchitem
+    searchitem,
+    signup
 
 )
 app_name='core'
@@ -29,13 +30,13 @@ urlpatterns = [
     path('add-to-cart/<slug>/', add_to_cart, name='add-to-cart'),
     path('remove-from-cart/<slug>/', remove_from_cart, name='remove_from_cart'),
     path('checkoutviews/' , checkoutviews.as_view(), name='checkoutviews'),
-    path('login_view/', login_view , name='login_view'),
     path('logout/' , logout, name='logout'),
-    path('signup/', signup, name='signup'),
     path('cart_summary/' , cart_summary.as_view(), name='cart_summary'),
     path('Sportwear/' , Sportwear , name='Sportwear'),
     path('elecctronics' , electronics, name='electronics'),
     path('shirts', shirts , name='shirts'),
-    path('searchitem/' , searchitem.as_view() , name='searchitem' )
+    path('searchitem/' , searchitem.as_view() , name='searchitem' ),
+    path('signup/' , signup , name='signup'),
+    path('login_view' , login_view , name='login_view')
 
 ]

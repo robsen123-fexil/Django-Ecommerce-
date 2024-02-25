@@ -1,5 +1,5 @@
 {% load static %}
-{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +66,7 @@
                         {% endif %}
                         <form method="post" action="{% url 'core:login_view' %}" class="from-group">
                             {% csrf_token %}
-                            {{forms|crispy}}
+                        
                             <div>
                                 <h2>Login</h2>
                                 <p class="lead">Before you get started, you must login or register if you don't already have an account.</p>
@@ -101,6 +101,7 @@
                                     <li><a href="#">Privacy Policy</a></li>
                                 </ul>
                             </form>
+                           
                         </form>
                         <div>
                             <!-- Additional content for the second column, if needed -->

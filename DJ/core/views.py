@@ -14,6 +14,13 @@ from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from .forms import checkoutforms
+from .forms import loginform
+from django.template.loader import get_template
+from django.contrib.auth.forms import AuthenticationForm
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context
+from django.contrib.auth.forms import UserCreationForm
 class products(ListView):
     model=items
     template_name='product.html'
@@ -81,45 +88,9 @@ def remove_from_cart(request, slug):
 
     return redirect("core:product", slug=slug)
 
-def login_view(request):
-    if request=='POST':
-        username=request.POST['username']
-        password=request.POST['password']
-        remember_me=request.POST.get('remember_me', False)
-        user=authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-        
 
-        else:
-            messages.error(request, "Invalid Password Or Username")
-    return render(request, 'login.html')
 def logout(request ):
     return render(request , "login.html")
-
-def signup(request):
-    if request.method=='POST':
-        username=request.POST['username']
-        password=request.POST['password']
-        password2=request.POST['password2']
-        email=request.POST['email']
-       
-        if password==password2:
-            if User.objects.filter(username=username).exists():
-                messages.error(request, "password is not same")
-                return redirect ('homeview')
-            if User.objects.filter(email=email).exists():
-                messages.error(request, "email is already taken ")
-                return redirect('homeview')
-            else:
-                user=User.objects.create_user(username=username, password=password)
-                user.save()
-                return redirect('homeview')
-        else:
-            messages.error(request, "password is not same ")
-
-    else:    
-       return render(request, 'signup.html')
 
 class cart_summary(View):
     template_name='cart_summary.html'
@@ -176,3 +147,29 @@ class searchitem(ListView):
             return items.objects.filter(title__icontains=query).order_by('-date')
         else:
             return items.objects.none()
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return render(request, 'login.html' )
+    else:
+        form = UserCreationForm()
+    
+    return render(request, 'signup.html', {'form': form})
+def login_view(request):
+    form=AuthenticationForm(request, request.POST) or None
+    if request.method=='POST':
+        if form.is_valid():
+            username=form.cleaned_data.get('username')
+            password=form.cleaned_data.get('password')
+            user=authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request , user)
+                messages.success(request , f"welcome {username}")
+                return render(request , 'home.html')
+            else:
+                form =AuthenticationForm()
+    return render(request , 'login.html', {'form':form})         

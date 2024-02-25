@@ -1,5 +1,7 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django_countries.fields import CountryField
+from django.contrib.auth.forms import User
 payment_option=(('p','paypal'), ('s','stripe'))
 class checkoutforms(forms.Form):
     firstname=forms.CharField(max_length=10) 
@@ -13,3 +15,6 @@ class checkoutforms(forms.Form):
     save_info=forms.BooleanField(widget=forms.CheckboxInput())
     payment_option=forms.ChoiceField(widget=forms.RadioSelect(), choices= payment_option)
     ziyp=forms.CharField(max_length=20)
+class loginform(forms.Form):
+    username=forms.CharField(max_length=30)
+    password=forms.CharField(max_length=10)
