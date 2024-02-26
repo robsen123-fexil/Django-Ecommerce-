@@ -76,22 +76,24 @@ def remove_from_cart(request, slug):
         orderuser = order_qs[0]
         if orderuser.items.filter(item__slug=item.slug).exists():
             order_item = orderitem.objects.filter(item=item, user=request.user, ordered=False)[0]
-            orderuser.items.remove(order_item)
-            order_item.delete()
             messages.info(request, "THE PRODUCT IS REMOVED FROM YOUR CART ")
             if order_item:
-                orderuser.items.remove(order_item)
+                if order_item.quantity <=0:
+                    return redirect("core:cart_summary" )
+                order_item.quantity-=1
+                order_item.save()
+                
                 messages.info(request, "THE PRODUCT WAS NOT ON YOUR Cart")
-                return redirect("core:product", slug=slug)
+                return redirect("core:cart_summary")
         else:
              messages.info(request, "THE PRODUCT was not ON YOUR CART ")
-             redirect("core:product", slug=slug)
+             redirect("core:cart_summary")
              messages.info(request, "THE PRODUCT IS REMOVED FROM YOUR CART ")
     else:
          messages.info(request,"THE PRODUCT IS NOT ON YOUR CART ")
-         redirect("core:product", slug=slug)
+         redirect("core:cart_summary")
 
-    return redirect("core:product", slug=slug)
+    return redirect("core:cart_summary")
 
 
 def logout(request ):

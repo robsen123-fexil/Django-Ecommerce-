@@ -25,12 +25,14 @@
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
             <td>{{ product.item.title }}</td>
+
             {% if product.item.discount_price %}
                 <td>${{ product.item.discount_price }}</td>
             {% else %}
                 <td>${{ product.item.price }}</td>
             {% endif %}
-            <td>{{ product.quantity }}</td>
+            
+            <td> <i class ="fas fa-minus mr-2" ></i>{{ product.quantity }} <i class = "fas fa-plus ml-2"></i> </td> 
             {% if product.item.discount_price %}
                 <td>${{ product.get_total_discount }}</td>
             {% else %}
@@ -41,5 +43,8 @@
     <tr>
         <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
         <td>${{ object.get_total }}</td>
+        <td colspan="5">
+        <a class= "btn btn-primary float-right ml-2" href='/'>Contuine shopping </a>
+        <a class = "btn btn-warning float-right" href="{%url 'core:checkoutviews'%}">proceed yo checkout</a>
     </tr>
 </tbody>
