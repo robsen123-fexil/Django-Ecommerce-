@@ -47,9 +47,9 @@ class orderitem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , blank=True, null=True)
     ordered=models.BooleanField(default=False)
     item=models.ForeignKey(items, on_delete=models.CASCADE)    
-    quality =models.IntegerField(default=1)
+    quantity =models.IntegerField(default=1)
     def __str__(self):
-        return f"{self.quality} of {self.item.title}"
+        return f"{self.quantity} of {self.item.title}"
      
 class order(models.Model):
      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
