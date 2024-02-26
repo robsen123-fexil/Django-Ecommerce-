@@ -39,29 +39,34 @@ class homeview(ListView):
     model=items
     paginate_by=10
     template_name='home.html'   
+@login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(items, slug=slug)
-    order_item, created = orderitem.objects.get_or_create(item=item , user=request.user, ordered=False)
-    
-    
-    order_qs=order.objects.filter(user=request.user ,ordered=False)
+    order_item, created = orderitem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered=False
+    )
+    order_qs = order.objects.filter(user=request.user, ordered=False)
     if order_qs.exists():
-        orderuser = order_qs[0]
-        if orderuser.items.filter(item__slug=item.slug).exists():
-            order_item.quality += 1
+        order = order_qs[0]
+        # check if the order item is in the order
+        if order.items.filter(item__slug=item.slug).exists():
+            order_item.quantity += 1
             order_item.save()
-            messages.info(request, "THE PRODUCT IS  UPDATED ")
+            messages.info(request, "This item quantity was updated.")
+            return redirect("core:order-summary")
         else:
-            orderuser.items.add(order_item)
-            messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART")
-            return redirect("core:product", slug=slug)
+            order.items.add(order_item)
+            messages.info(request, "This item was added to your cart.")
+            return redirect("core:order-summary")
     else:
-        order_date = timezone.now()
-        neworder = order.objects.create(user=request.user, ordered_date=order_date)
-        neworder.items.add(order_item)
-        messages.info(request, "THE PRODUCT HAVE BEEN ADDED TO YOUR CART  ")
-    return redirect("core:product", slug=slug)
-
+        ordered_date = timezone.now()
+        order = order.objects.create(
+            user=request.user, ordered_date=ordered_date)
+        order.items.add(order_item)
+        messages.info(request, "This item was added to your cart.")
+        return redirect("core:order-summary")
 
 def remove_from_cart(request, slug):
     item = get_object_or_404(items, slug=slug)

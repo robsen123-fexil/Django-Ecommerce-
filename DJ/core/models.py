@@ -14,11 +14,11 @@ class items(models.Model):
     price=models.FloatField()
     discount_price=models.FloatField(blank=True, null=True)
     categories=models.CharField(choices=CATEGORIES_CHOICE, max_length=20)
-    slug=models.SlugField()
+    slug=models.SlugField(unique=True)
     date=models.DateField(default= timezone.now)
     description=models.CharField(max_length=10000)
     forsell=models.CharField(max_length=100)
-    quantity=models.IntegerField(default=2)
+   
     image=models.ImageField(blank=True , null= True )
     
     def __str__(self):
@@ -47,7 +47,7 @@ class orderitem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , blank=True, null=True)
     ordered=models.BooleanField(default=False)
     item=models.ForeignKey(items, on_delete=models.CASCADE)    
-    quality =models.IntegerField(default=2)
+    quality =models.IntegerField(default=1)
     def __str__(self):
         return f"{self.quality} of {self.item.title}"
      
