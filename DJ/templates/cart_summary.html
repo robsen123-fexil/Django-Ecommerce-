@@ -1,26 +1,45 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">List</th>
-      <th scope="col">Title</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total Price</th>
-    </tr>
-  </thead>
-  <tbody>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Your Cart</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">List</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+            </tr>
+        </thead>
+       <tbody>
     {% for product in object.items.all %}
-      <tr>
-        <th scope="row">{{ forloop.counter }}</th>
-        <td>{{ product.item.title }}</td>
-        <td>${{ product.item.price }}</td>
-        <td>{{ product.item.quantity }}</td>
-        {%if product.item.discount_price%}
-        <td>{{ product.get_total_discount}}</td>
-        {%else%}
-        <td>{{ product.get_total_price}}</td>
-        {%endif%}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ product.item.title }}</td>
+            {% if product.item.discount_price %}
+                <td>${{ product.item.discount_price }}</td>
+            {% else %}
+                <td>${{ product.item.price }}</td>
+            {% endif %}
+            <td>{{ product.quantity }}</td>
+            {% if product.item.discount_price %}
+                <td>${{ product.get_total_discount }}</td>
+            {% else %}
+                <td>${{ product.get_total_price }}</td>
+            {% endif %}
+        </tr>
     {% endfor %}
-  </tbody>
-</table>
+    <tr>
+        <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
+        <td>${{ object.get_total }}</td>
+    </tr>
+</tbody>
